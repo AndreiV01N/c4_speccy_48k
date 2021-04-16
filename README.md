@@ -11,6 +11,7 @@
 - Considering some limitations of the dev board it had to reduce some functionality: 3-bit color (no BRIGHT signal), built-in BEEPER sound, LOAD/SAVE over RS-232 w/o flow ctl.
 - Main ULA-module was rewritten in Verilog, video-subsystem adapted to the resolution 1280x1024@60 (pixel clock 108MHz).
 - RS-232 speed is set to 115200-8N1 which allows to load/save 11025-mono bitrate .wav files in real time:
+
 `$ stty -F /dev/ttyUSB0 115200 raw -echo`
 - LOAD/SAVE modes are toggled by F11,F12 keys resp. followed by indication on 4x7led block. Below is a matrix of implamented LOAD/SAVE modes:
 
@@ -23,4 +24,5 @@ SAVE mode 1 | `$ cat /dev/ttyUSB0 > ABC.tap` | Yes (\*)
 SAVE mode 2 | `$ cat /dev/ttyUSB0 > ABC.tap` | No (\*\*)
 
 (\*) - LOAD and SAVE modes "1" imply ROM modding (see asm/ dir). Also note that the both "turbo" modes may not work anywhere since tons of ZX-software use its own loaders/savers which expect/produce standard slow signalling on TAPE_IN/TAPE_OUT pins.
+
 (\*\*) - the .tap file has to be fixed by 'fix_tap' tool (see c/readme.txt)
