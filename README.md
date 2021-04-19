@@ -13,7 +13,7 @@
 - RS-232 speed is set to 115200-8N1 which allows to load/save 11025-mono bitrate .wav files in real time:
 
 `$ stty -F /dev/ttyUSB0 115200 raw -echo`
-- LOAD/SAVE modes are toggled by F11,F12 keys resp. followed by indication on 4x7led block. Below is a matrix of implamented LOAD/SAVE modes:
+- LOAD/SAVE modes are toggled by F11,F12 keys resp. followed by indication on 4x7led block. Below is a matrix of implemented LOAD/SAVE modes:
 
 Mode | Command sample | ROM modding is required
 ---- | -------------- | -----------------------
