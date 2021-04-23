@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
 
 entity sdram_controller is
 	generic (
-		--memory frequency in MHz
-		sdram_frequency	: integer := 57
+		--memory frequency in Hz
+		sdram_frequency	:	integer := 56842105	-- PLL's clock_0
 	);
 	port (
 		--ready to operation
@@ -63,15 +63,15 @@ architecture rtl of sdram_controller is
 	constant cmd_nop		: std_logic_vector(2 downto 0) := "111";
 
 	--Timing parameters
-	constant tRAS			: integer :=	((sdram_frequency * 44)/1000)+1;	--ACTIVE-to-PRECHARGE command
-	constant tRC			: integer :=	((sdram_frequency * 66)/1000)+1;	--ACTIVE-to-ACTIVE command period
-	constant tRCD			: integer :=	((sdram_frequency * 20)/1000)+1;	--ACTIVE-to-READ or WRITE delay
-	constant tRFC			: integer :=	((sdram_frequency * 66)/1000)+1;	--AUTO REFRESH command period
-	constant tRP			: integer :=	((sdram_frequency * 20)/1000)+1;	--PRECHARGE command period
-	constant tRRD			: integer :=	((sdram_frequency * 15)/1000)+1;	--ACTIVE bank a to ACTIVE bank b command
-	constant tWR			: integer :=	((sdram_frequency * 15)/1000)+1;	--WRITE recovery time
-	constant tINIT			: integer :=	(sdram_frequency * 10)+1;		--minimal initialization time
-	constant tREF			: integer :=	((sdram_frequency * 1560)/1000)+1;	--REFRESH period (for row)
+	constant tRAS			: integer :=	((sdram_frequency * 44)   / 1000000000) + 1;	--ACTIVE-to-PRECHARGE command
+	constant tRC			: integer :=	((sdram_frequency * 66)   / 1000000000) + 1;	--ACTIVE-to-ACTIVE command period
+	constant tRCD			: integer :=	((sdram_frequency * 20)   / 1000000000) + 1;	--ACTIVE-to-READ or WRITE delay
+	constant tRFC			: integer :=	((sdram_frequency * 66)   / 1000000000) + 1;	--AUTO REFRESH command period
+	constant tRP			: integer :=	((sdram_frequency * 20)   / 1000000000) + 1;	--PRECHARGE command period
+	constant tRRD			: integer :=	((sdram_frequency * 15)   / 1000000000) + 1;	--ACTIVE bank a to ACTIVE bank b command
+	constant tWR			: integer :=	((sdram_frequency * 15)   / 1000000000) + 1;	--WRITE recovery time
+	constant tREF			: integer :=	((sdram_frequency * 1560) / 1000000000) + 1;	--REFRESH period (for row)
+	constant tINIT			: integer :=	 (sdram_frequency / 100000)             + 1;	--minimal initialization time
 
 begin
 	state_machine:process(clock) begin
