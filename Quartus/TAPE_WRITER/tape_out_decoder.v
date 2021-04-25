@@ -9,8 +9,8 @@ module tape_out_decoder (
 	output wire [7:0]	o_data,
 	output wire		o_fifo_write_req
 );
-	wire			r_tape_out;
-	assign			r_tape_out		= i_tape_out;		// idling when "turbo"
+	wire			w_tape_out;
+	assign			w_tape_out		= i_tape_out;		// idling when "turbo"
 	
 	reg [31:0]		r_counter		= 32'd0;		// to count HIGH and LOW levels lengths
 	reg			r_level			= 1'b0;
@@ -66,7 +66,7 @@ module tape_out_decoder (
 		if (r_byte_tap_ready)								// FIFO_out already saved the data at preceeding posedge
 			r_byte_tap_ready <= 1'b0;
 
-		if (r_tape_out != r_level) begin						// tape level has now just changed to opposite
+		if (w_tape_out != r_level) begin						// tape level has now just changed to opposite
 			if (r_state == 3'd6)
 				r_state <= 3'd0;						// unlock r_counter upon SAVE activity
 
@@ -116,7 +116,7 @@ module tape_out_decoder (
 				endcase
 			end
 			r_counter <= 32'd0;				// reset counter to count a new level length
-			r_level <= r_tape_out;
+			r_level <= w_tape_out;
 		end else begin						// same tape level as last time
 			if (r_state != 3'd6)				// lock counter while silence on serial_rx
 				r_counter = r_counter + 1'b1;		// counts current level length

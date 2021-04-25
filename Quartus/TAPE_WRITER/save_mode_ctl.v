@@ -9,8 +9,8 @@ module save_mode_ctl (
 	reg		r_save_mode_tgl_aligned;
 	reg		r_save_mode_tgl_d1;
 
-	assign	o_save_mode_id	= r_save_mode_id;
-	assign	o_save_turbo	= r_save_mode_id[0];
+	assign		o_save_mode_id	= r_save_mode_id;
+	assign		o_save_turbo	= r_save_mode_id[0];
 
 	always @ (negedge i_clock) begin
 		r_save_mode_tgl_aligned <= i_save_mode_tgl;

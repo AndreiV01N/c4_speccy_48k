@@ -10,19 +10,19 @@ module seven_led_x4 (
 //	reg [7:0]		r_seg;
 //	reg [3:0]		r_dig;
 
-	wire [1:0]		r_load_mode_id;
-	wire [1:0]		r_save_mode_id;
+	wire [1:0]		w_load_mode_id;
+	wire [1:0]		w_save_mode_id;
 	reg  [3:0]		r_hex;
 	reg  [31:0]		r_counter;
 
-	assign			r_load_mode_id =	i_load_mode_id;
-	assign			r_save_mode_id =	i_save_mode_id;
+	assign			w_load_mode_id =	i_load_mode_id;
+	assign			w_save_mode_id =	i_save_mode_id;
 
 	always @ (posedge i_clock) begin
 		r_counter <= r_counter + 1'b1;
 	end
 
-	always @ (r_counter[17] or r_load_mode_id or r_save_mode_id) begin	// ~200 Hz
+	always @ (r_counter[17] or w_load_mode_id or w_save_mode_id) begin	// ~200 Hz
 		case (r_counter[19:18])
 			2'b00:	begin
 					o_dig <= 4'b0111;
@@ -30,7 +30,7 @@ module seven_led_x4 (
 				end
 			2'b01:	begin
 					o_dig <= 4'b1011;
-					r_hex <= {2'b00, r_load_mode_id};	// 0. , 1. , 2. , 3.
+					r_hex <= {2'b00, w_load_mode_id};	// 0. , 1. , 2. , 3.
 				end
 			2'b10:	begin
 					o_dig <= 4'b1101;
@@ -38,7 +38,7 @@ module seven_led_x4 (
 				end
 			2'b11:	begin
 					o_dig <= 4'b1110;
-					r_hex <= {2'b00, r_save_mode_id};	// 0. , 1. , 2. , 3.
+					r_hex <= {2'b00, w_save_mode_id};	// 0. , 1. , 2. , 3.
 				end
 		endcase
 	end

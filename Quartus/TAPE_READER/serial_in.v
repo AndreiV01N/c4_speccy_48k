@@ -20,11 +20,11 @@ module serial_in (
 	reg [15:0]		r_counter		= 16'd0;
 	reg			r_serial_rx_d1;
 	reg			r_serial_rx_d2;
-	wire			r_load_turbo;
+	wire			w_load_turbo;
 
-	assign			r_load_turbo		= i_load_turbo;
+	assign			w_load_turbo		= i_load_turbo;
 	assign			o_data			= r_data;
-	assign			o_fifo_write_req	= (r_load_turbo && r_data_ready) ? 1'b1 : 1'b0;
+	assign			o_fifo_write_req	= (w_load_turbo && r_data_ready) ? 1'b1 : 1'b0;
 	assign			o_tape_in		= r_data[7];			// comp. w/ 8'd128 in 'normal', make noise in 'turbo'
 
 	always @ (posedge i_clock) begin

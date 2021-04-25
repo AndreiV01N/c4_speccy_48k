@@ -14,8 +14,8 @@ module serial_out (
 	reg			r_serial_tx		= 1'b1;
 	assign			o_serial_tx		= r_serial_tx;
 
-	wire			r_new_data_ready;
-	assign			r_new_data_ready	= ~i_fifo_empty;
+	wire			w_new_data_ready;
+	assign			w_new_data_ready	= ~i_fifo_empty;
 
 	reg [31:0]		r_counter_dds		= 32'd0;
 	reg			r_115200_freq_d1;
@@ -45,7 +45,7 @@ module serial_out (
 
 		case (r_state)
 			3'd0:	begin
-					if (r_new_data_ready) begin		// FIFO is not empty
+					if (w_new_data_ready) begin		// FIFO is not empty
 						r_serial_tx <= 1'b0;		// START-bit
 						r_read_data_req <= 1'b1;	// ask FIFO to expose next byte on i_data
 						r_state <= 3'd1;

@@ -13,9 +13,9 @@ module load_mode_ctl (
 	reg		r_load_mode_tgl_d1;
 	reg		r_load_mode_tgl_d2;
 
-	assign	o_clear_fifo	= (r_load_mode_tgl_aligned && ~r_load_mode_tgl_d2) ? 1'b1 : 1'b0;
-	assign	o_load_mode_id	= r_load_mode_id;
-	assign	o_load_turbo	= r_load_mode_id[0];
+	assign		o_clear_fifo	= (r_load_mode_tgl_aligned && ~r_load_mode_tgl_d2) ? 1'b1 : 1'b0;
+	assign		o_load_mode_id	= r_load_mode_id;
+	assign		o_load_turbo	= r_load_mode_id[0];
 
 	always @ (negedge i_clock) begin
 		r_load_mode_tgl_aligned <= i_load_mode_tgl;
