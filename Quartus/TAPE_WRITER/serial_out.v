@@ -63,7 +63,7 @@ module serial_out (
 				end
 		endcase
 	end
-	
+
 	always @ (negedge w_115200_freq) begin
 		case (r_state)
 			3'd0:	r_bit_ptr <= 3'd7;

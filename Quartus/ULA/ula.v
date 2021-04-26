@@ -203,7 +203,7 @@ module ula (
 	assign port_5F_sel	= (~cpu_iorq_n &&  cpu_a_bus[7:0]   == 8'h5F)	? 1'b1 : 1'b0;		// positive if selected (port C of 8255A)
 	assign port_FE_sel	= (~cpu_iorq_n &&  cpu_a_bus[7:0]   == 8'hFE)	? 1'b1 : 1'b0;		// positive if selected (cpu_a_bus[7:0] == 8'hFE)
 	assign port_XX_out	= (~cpu_iorq_n && ~cpu_wr_n)			? 1'b1 : 1'b0;
-	
+
 	always @ (posedge port_XX_out) begin
 		case (cpu_a_bus[7:0])
 			8'h3F:	port_3F_out <= cpu_do_bus;		// OUT (x3F) <- A

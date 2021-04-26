@@ -11,7 +11,7 @@ module tape_out_decoder (
 );
 	wire			w_tape_out;
 	assign			w_tape_out		= i_tape_out;		// idling when "turbo"
-	
+
 	reg [31:0]		r_counter		= 32'd0;		// to count HIGH and LOW levels lengths
 	reg			r_level			= 1'b0;
 	reg [2:0]		r_bit_ptr		= 3'd0;

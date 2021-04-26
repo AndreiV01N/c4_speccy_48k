@@ -9,7 +9,7 @@ module fifo_reader (
 	reg		r_read_req_aligned;
 	reg		r_read_req_d1;
 	reg		r_read_req_d2;
-	
+
 	always @ (negedge i_clock) begin
 		r_read_req_aligned <= i_port_5F_out[0];
 		r_read_req_d2 <= r_read_req_d1;
