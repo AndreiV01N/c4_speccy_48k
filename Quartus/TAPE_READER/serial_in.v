@@ -7,10 +7,8 @@ module serial_in (
 	output wire [7:0]	o_data,					// FIFO data in
 	output wire		o_fifo_write_req			// FIFO write request
 );
-	parameter		CLOCK			= 56842105;
-	parameter		BAUD_RATE		= 115200;
-	parameter		SERIAL_STROBE_FULL	= CLOCK / BAUD_RATE;		// d493
-	parameter		SERIAL_STROBE_HALF	= CLOCK / (BAUD_RATE * 2);
+	localparam		BAUD_RATE		= 115200;
+	localparam		SERIAL_STROBE		= (56842105 / BAUD_RATE) + 1;		// CLOCK/BAUD_RATE
 
 	reg [7:0]		r_data			= 8'd0;
 	reg			r_data_ready		= 1'b0;
@@ -45,7 +43,7 @@ module serial_in (
 					end
 				end
 			3'd1:	begin
-					if (r_counter == SERIAL_STROBE_HALF) begin	// half of strobe - middle of START-bit
+					if (r_counter == (SERIAL_STROBE / 2)) begin	// half of strobe - middle of START-bit
 						r_counter <= 16'd0;			// reset counter
 						if (~r_serial_rx_d2) begin		// good news - START-bit is really LOW
 							r_bit_ptr <= 3'd0;
@@ -56,7 +54,7 @@ module serial_in (
 						r_counter <= r_counter + 1'b1;
 				end
 			3'd2:	begin
-					if (r_counter == SERIAL_STROBE_FULL) begin	// middle of data-bits
+					if (r_counter == SERIAL_STROBE) begin		// middle of data-bits
 						r_counter <= 16'd0;
 						r_data_raw[r_bit_ptr] <= r_serial_rx_d2;
 						if (r_bit_ptr == 3'd7)			// last data-bit has now been processed
@@ -67,7 +65,7 @@ module serial_in (
 						r_counter <= r_counter + 1'b1;
 				end
 			3'd3:	begin
-					if (r_counter == SERIAL_STROBE_FULL) begin	// middle of STOP-bit (8N1)
+					if (r_counter == SERIAL_STROBE) begin		// middle of STOP-bit (8N1)
 						r_counter <= 16'd0;
 						if (r_serial_rx_d2) begin
 							r_data <= r_data_raw;		// expose the new data-byte only if STOP-bit is really HIGH
