@@ -157,11 +157,6 @@ https://fpgasoftware.intel.com/eula.
 		(text "sdram_dq[15..0]" (rect 131 171 259 191)(font "Arial" ))
 		(line (pt 264 176)(pt 248 176)(line_width 3))
 	)
-	(parameter
-		"sdram_frequency"
-		"72"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 248 256))
 	)
