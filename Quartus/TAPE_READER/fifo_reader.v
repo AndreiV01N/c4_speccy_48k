@@ -1,5 +1,5 @@
 module fifo_reader (
-	input		i_clock,			// 56.84 MHz
+	input		i_clock,			// ~abt 56 MHz
 	input [3:0]	i_port_5F_out,			// Bit-0: FIFO read request
 
 	output		o_fifo_read_req		= 1'b0

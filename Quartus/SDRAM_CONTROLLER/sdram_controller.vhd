@@ -16,7 +16,7 @@ entity sdram_controller is
 		rd_req		: in  std_logic;
 		rd_adr		: in  std_logic_vector(21 downto 0);
 		rd_data		: out std_logic_vector(15 downto 0);
-		rd_valid	: out std_logic;
+--		rd_valid	: out std_logic;
 		--write
 		wr_req		: in  std_logic;
 		wr_adr		: in  std_logic_vector(21 downto 0);
@@ -243,7 +243,7 @@ begin
 	same_row_and_bank	<= '1'			when (adr(21 downto 8) = adr_reg(21 downto 8))	else '0';
 	rd_cycle		<= rd_now		when (state = "000")				else rd_selected;
 	wr_selected		<= not rd_selected;
-	rd_valid		<= rd_pipe_valid(3);
+--	rd_valid		<= rd_pipe_valid(3);
 
 	--command set
 	sdram_ras_n		<= sdram_cmd(2);

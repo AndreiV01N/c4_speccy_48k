@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 2020  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -21,34 +21,34 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.2"))
 (symbol
-	(rect 0 0 216 136)
-	(text "rom_16k" (rect 67 0 166 28)(font "Arial" (font_size 10)))
-	(text "inst" (rect 8 112 39 132)(font "Arial" ))
+	(rect 0 0 216 128)
+	(text "rom_16k" (rect 80 2 140 17)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 113 24 124)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "address[13..0]" (rect 0 0 126 23)(font "Arial" (font_size 8)))
-		(text "address[13..0]" (rect 4 9 111 31)(font "Arial" (font_size 8)))
+		(text "address[13..0]" (rect 0 0 82 13)(font "Arial" (font_size 8)))
+		(text "address[13..0]" (rect 4 19 73 31)(font "Arial" (font_size 8)))
 		(line (pt 0 32)(pt 88 32)(line_width 3))
 	)
 	(port
 		(pt 0 112)
 		(input)
-		(text "clock" (rect 0 0 47 23)(font "Arial" (font_size 8)))
-		(text "clock" (rect 4 89 44 111)(font "Arial" (font_size 8)))
+		(text "clock" (rect 0 0 30 13)(font "Arial" (font_size 8)))
+		(text "clock" (rect 4 99 29 111)(font "Arial" (font_size 8)))
 		(line (pt 0 112)(pt 144 112))
 	)
 	(port
 		(pt 216 32)
 		(output)
-		(text "q[7..0]" (rect 0 0 55 23)(font "Arial" (font_size 8)))
-		(text "q[7..0]" (rect 167 9 214 31)(font "Arial" (font_size 8)))
+		(text "q[7..0]" (rect 0 0 36 13)(font "Arial" (font_size 8)))
+		(text "q[7..0]" (rect 177 19 206 31)(font "Arial" (font_size 8)))
 		(line (pt 216 32)(pt 160 32)(line_width 3))
 	)
 	(drawing
-		(text "8 bits" (rect 101 36 198 175)(font "Arial" )(vertical))
-		(text "16384 words" (rect 120 19 242 225)(font "Arial" )(vertical))
-		(text "Block type: AUTO" (rect 48 117 212 253)(font "Arial" ))
+		(text "8 bits" (rect 109 25 192 156)(font "Arial" )(vertical))
+		(text "16384 words" (rect 120 18 220 190)(font "Arial" )(vertical))
+		(text "Block type: AUTO" (rect 48 115 171 240)(font "Arial" ))
 		(line (pt 104 24)(pt 136 24))
 		(line (pt 136 24)(pt 136 96))
 		(line (pt 136 96)(pt 104 96))
@@ -74,9 +74,9 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 80 112)(pt 80 36))
 		(line (pt 144 112)(pt 144 36))
 		(line (pt 0 0)(pt 217 0))
-		(line (pt 217 0)(pt 217 141))
-		(line (pt 0 141)(pt 217 141))
-		(line (pt 0 0)(pt 0 141))
+		(line (pt 217 0)(pt 217 130))
+		(line (pt 0 130)(pt 217 130))
+		(line (pt 0 0)(pt 0 130))
 		(line (pt 0 0)(pt 0 0))
 		(line (pt 0 0)(pt 0 0))
 		(line (pt 0 0)(pt 0 0))

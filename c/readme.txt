@@ -12,3 +12,7 @@ i.e.
     00 00 <BLOCK_1 DATA> AA AA <BLOCK_2 DATA> BB BB <BLOCK_3 DATA> CC CC
 turns into:
     AA AA <BLOCK_1 DATA> BB BB <BLOCK_2 DATA> CC CC <BLOCK_3 DATA>
+
+Usage:
+$ gcc ./fix_tap.c -o fix_tap
+$ ./fix_tap saved.tap

@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 2020  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -22,13 +22,13 @@ https://fpgasoftware.intel.com/eula.
 (header "symbol" (version "1.2"))
 (symbol
 	(rect 0 0 112 48)
-	(text "const_port_5F_in" (rect 3 0 192 28)(font "Arial" (font_size 10)))
-	(text "inst" (rect 8 24 39 44)(font "Arial" ))
+	(text "const_port_5F_in" (rect 3 2 122 17)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 33 24 44)(font "Arial" ))
 	(port
 		(pt 112 24)
 		(output)
-		(text "result[0]" (rect 0 0 75 23)(font "Arial" (font_size 8)))
-		(text "0" (rect 84 13 94 35)(font "Arial" (font_size 8)))
+		(text "result[0]" (rect 0 0 47 13)(font "Arial" (font_size 8)))
+		(text "0" (rect 86 18 91 30)(font "Arial" (font_size 8)))
 		(line (pt 112 24)(pt 96 24))
 	)
 	(drawing

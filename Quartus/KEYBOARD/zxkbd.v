@@ -63,7 +63,8 @@ module zxkbd (
 							state <= 4'd0;
 						end else
 							case(ps2q)
-								8'h7e:	res_key		<= 1'b0;	//reset
+								//8'h7e:	res_key		<= 1'b0;	//reset "Scroll Lock"
+								8'h6c:	res_key		<= 1'b0;	//reset "Home"
 								8'h07:	r_f_key[12]	<= 1'b1;
 								8'h78:	r_f_key[11]	<= 1'b1;
 								8'h09:	r_f_key[10]	<= 1'b1;
@@ -106,7 +107,7 @@ module zxkbd (
 							ex_code <= 1'b1;
 							state <= 4'd6;
 						end else
-						state <= 4'd9;
+							state <= 4'd9;
 					end
 				4'd9:	begin
 						if ((ps2q == 8'h12) && ex_code) begin
@@ -114,7 +115,8 @@ module zxkbd (
 							state <= 4'd6;
 						end else
 							case(ps2q)
-								8'h7e:	res_key		<= 1'b1;	//reset
+								//8'h7e:	res_key		<= 1'b1;	//reset "Scroll Lock"
+								8'h6c:	res_key		<= 1'b1;	//reset "Home"
 								8'h07:	r_f_key[12]	<= 1'b0;
 								8'h78:	r_f_key[11]	<= 1'b0;
 								8'h09:	r_f_key[10]	<= 1'b0;

@@ -1,5 +1,5 @@
 module serial_in (
-	input			i_clock,				// 56.84 MHz
+	input			i_clock,				// ~abt 56 MHz
 	input			i_serial_rx,
 	input			i_load_turbo,				// 0-normal, 1-turbo
 
@@ -8,7 +8,7 @@ module serial_in (
 	output wire		o_fifo_write_req			// FIFO write request
 );
 	localparam		BAUD_RATE		= 115200;
-	localparam		SERIAL_STROBE		= (56842105 / BAUD_RATE) + 1;		// CLOCK/BAUD_RATE
+	localparam		SERIAL_STROBE		= (56842105 / BAUD_RATE) + 1;		// real clock_sys/BAUD_RATE + 1
 
 	reg [7:0]		r_data			= 8'd0;
 	reg			r_data_ready		= 1'b0;

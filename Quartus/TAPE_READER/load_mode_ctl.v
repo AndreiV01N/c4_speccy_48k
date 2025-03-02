@@ -1,5 +1,5 @@
 module load_mode_ctl (
-	input		i_clock,			// 56.84 MHz
+	input		i_clock,			// ~abt 56 MHz
 	input		i_load_mode_tgl,		// F11 key from ULA
 
 	output		o_clear_fifo,
