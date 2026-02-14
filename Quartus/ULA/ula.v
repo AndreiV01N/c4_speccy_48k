@@ -83,7 +83,7 @@ module ula (
 	parameter	vga_v_f_porch	= 2;
 	parameter	vga_v_sync	= 12;
 	parameter	vga_v_b_porch	= 26;
-
+//
 	reg		is_tiled	= 1'd0;		// toggled by F9 key [0,1]
 	reg [2:0]	pix_per_dot	= 3'd1;		// toggled by F10 key [1,2,3,4,5]
 
@@ -108,7 +108,7 @@ module ula (
 	wire [10:0]	screen_y_pix		= 11'((pix_per_dot << 6) * 3);		// *192
 
 	wire [10:0]	border_x		= 11'((vga_x - screen_x_pix) >> 1);
-	wire [10:0]	border_y		= 11'(( vga_y - screen_y_pix) >> 1);
+	wire [10:0]	border_y		= 11'((vga_y - screen_y_pix) >> 1);
 
 	wire [10:0]	vga_h_sync_begin	= 11'(vga_x_total - vga_h_sync);
 	wire [10:0]	vga_h_sync_end		= 11'(vga_x_total - 1);			// reset <h_cnt>
@@ -131,7 +131,7 @@ module ula (
 						   : 11'(vga_h_b_porch + border_x);
 
 	wire [10:0]	screen_x_end	= is_tiled ? 11'(vga_h_b_porch + vga_x - 1)
-						   : 11'(vga_h_b_porch + border_x + screen_x_pix - 2);
+						   : 11'(vga_h_b_porch + border_x + screen_x_pix - 1);
 
 	wire [4:0]	h_cmap_init	= is_tiled ? 5'(31 - ((border_x % screen_x_pix) / cmap_size_pix))
 						   : 5'd0;
@@ -297,13 +297,13 @@ module ula (
 							end
 					endcase
 				end
-			start_x - cmap_size_pix - 1:
+			start_x - cmap_size_pix:
 				begin
 					h_cmap <= h_cmap_init;
 					h_cmap_pix <= 6'd0;		// 1-st pix in cmap
 					h_cmap_dot <= 3'd0;		// 1-st dot in cmap
 				end
-			start_x - 1:
+			start_x:
 				begin
 					h_cmap <= h_cmap + 1'b1;
 					h_cmap_pix <= 6'd0;
